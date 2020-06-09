@@ -10,13 +10,20 @@ interface IProps {
   columnsByKeys: {
     [key: string]: IColumn;
   };
+  animation: boolean;
 }
 
-function Body({ columnsKeys, rows, columnsByKeys }: IProps) {
+function Body({ columnsKeys, rows, columnsByKeys, animation }: IProps) {
   return (
     <tbody>
       {rows.map((row: IRow, index: number) => (
-        <Row columnsKeys={columnsKeys} row={row} key={index} columnsByKeys={columnsByKeys} />
+        <Row
+          columnsKeys={columnsKeys}
+          row={row}
+          key={index}
+          columnsByKeys={columnsByKeys}
+          animation={animation}
+        />
       ))}
     </tbody>
   );

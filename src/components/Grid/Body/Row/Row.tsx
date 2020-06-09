@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 import Cell from './Cell';
 
@@ -11,15 +11,25 @@ interface IProps {
   columnsByKeys: {
     [key: string]: IColumn;
   };
+  animation: boolean;
 }
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }`;
 
 const StyledRow = styled.tr`
   border: 1px solid rgba(0, 0, 0, 0.12);
+  animation: ${props =>
+    props.theme.animation === true
+      ? css`
+          ${fadeIn} 0.5s
+        `
+      : ''};
 `;
 
-function Row({ columnsKeys, row, columnsByKeys }: IProps) {
+function Row({ columnsKeys, row, columnsByKeys, animation }: IProps) {
   return (
-    <StyledRow>
+    <StyledRow theme={{ animation }}>
       {columnsKeys.map((key: string, index: number) => (
         <Cell
           key={key}

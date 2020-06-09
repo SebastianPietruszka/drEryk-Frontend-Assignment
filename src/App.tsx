@@ -22,7 +22,7 @@ const columns = [
 const rows = [
   {
     firstName: 'Sebastian',
-    lastName: 'Pietruszka van Der Vaart',
+    lastName: 'Pietruszka',
     age: '28',
     position: 'Front-end Developer',
     experience: '3',

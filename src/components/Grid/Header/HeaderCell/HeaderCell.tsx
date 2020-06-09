@@ -24,9 +24,7 @@ const StyledHeaderCell = styled.th`
   right: ${(props: IStyledComponentProps) => (props.theme.frozen ? '0px' : 'inherit')};
   border-left: ${(props: IStyledComponentProps) =>
     props.theme.frozen ? '1px solid rgba(0, 0, 0, 0.22)' : 'none'};
-  max-width: ${(props: IStyledComponentProps) =>
-    props.theme.width ? props.theme.width + 'px' : '60px'};
-  min-width: ${(props: IStyledComponentProps) =>
+  width: ${(props: IStyledComponentProps) =>
     props.theme.width ? props.theme.width + 'px' : '60px'};
   background-color: #f6f8f6;
   white-space: nowrap;

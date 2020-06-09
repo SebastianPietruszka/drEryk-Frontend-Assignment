@@ -31,6 +31,7 @@ const compare = (a: IRow, b: IRow, key: string) => {
 
 function Grid({ columns, rows }: IProps) {
   const [sortingColumn, setSortingColumn] = useState('');
+  const [animation, setAnimation] = useState(false);
   const [sortedRows, setSortedRows] = useState(rows);
   const columnsByKeys = useMemo(
     () =>
@@ -42,13 +43,16 @@ function Grid({ columns, rows }: IProps) {
   );
 
   const sortColumns = (columnKey: string) => {
+    setAnimation(true);
     if (columnKey === sortingColumn) {
       setSortedRows([...sortedRows].reverse());
+      setTimeout(() => setAnimation(false), 200);
       return;
     }
 
     setSortingColumn(columnKey);
     setSortedRows(sortedRows.sort((a: IRow, b: IRow) => compare(a, b, columnKey)));
+    setTimeout(() => setAnimation(false), 200);
   };
 
   const columnsKeys = columns.map(({ key }: IColumn) => key);
@@ -56,7 +60,7 @@ function Grid({ columns, rows }: IProps) {
   return (
     <Table>
       <Header columns={columns} sortColumns={sortColumns} />
-      <Body columnsByKeys={columnsByKeys} columnsKeys={columnsKeys} rows={sortedRows} />
+      <Body columnsByKeys={columnsByKeys} columnsKeys={columnsKeys} rows={sortedRows} animation={animation} />
     </Table>
   );
 }
