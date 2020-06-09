@@ -29,6 +29,7 @@ const StyledCell = styled.td`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  float: left;
 `;
 
 function Cell({ cellValue, frozen, width }: IProps) {

@@ -32,6 +32,7 @@ const StyledHeaderCell = styled.th`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  float: left;
 
   &:hover {
     background-color: #bed5f9;
